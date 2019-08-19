@@ -4,7 +4,6 @@ import { useRef, useLayoutEffect } from 'react';
 const useAnimationCanvas = (draw: (conext: any) => void, contextType = '2d', contextAttributes = {}) => {
     const refCanvas = useRef<HTMLCanvasElement> (null);
 
-
     useLayoutEffect(() => {
         if (refCanvas && refCanvas.current) {
             const context = refCanvas.current.getContext(contextType, contextAttributes);
@@ -23,7 +22,6 @@ const useAnimationCanvas = (draw: (conext: any) => void, contextType = '2d', con
     return refCanvas;
 }
 
-export default useAnimationCanvas;
 const Canvas = () => {
     const refCanvas = useAnimationCanvas((context) => {
         context.beginPath();
