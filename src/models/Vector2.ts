@@ -36,6 +36,15 @@ export default class Vector2 {
         this.y *= vector.y;
     }
 
+    scale = (scale: number) => {
+        this.x *= scale;
+        this.y *= scale;
+    }
+
+    copy = () => {
+        return new Vector2(this.x, this.y);
+    }
+
     static normalized = (vector: Vector2) => {
         const midpointX = CANVAS_WIDTH / 2;
         const midpointY = CANVAS_HEIGHT / 2;

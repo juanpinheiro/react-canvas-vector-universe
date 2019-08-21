@@ -17,9 +17,14 @@ export default class Snowflake extends Physics {
         this.alpha = randomBetween(0.1, 0.9);
     }
 
+    applyForce = (force: Vector2) => {
+        this.acceleration.increment(force);
+    }
+
     render = () => {
         this.position.increment(this.velocity);
         this.velocity.increment(this.acceleration);
+        this.acceleration.scale(0);
 
         if (this.position.x > CANVAS_WIDTH) {
             this.position.x = 0;
@@ -27,6 +32,10 @@ export default class Snowflake extends Physics {
             this.position.y = 0;
         } else if (this.position.x < 0) {
             this.position.x = CANVAS_HEIGHT;
+        } else if (this.position.y < 0) {
+            this.position.y = 0;
+            this.velocity = new Vector2(randomBetween(-0.3, 0.3), randomBetween(0.3, 1));
+            this.acceleration = new Vector2();
         }
       
     }
